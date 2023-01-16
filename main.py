@@ -1,9 +1,9 @@
-import network
 import os
+import network
+import game
 from tkinter import *
 from tkinter import ttk
 from ttkbootstrap import Style
-import game
 
 it = 10000
 step = 0.15

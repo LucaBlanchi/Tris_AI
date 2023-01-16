@@ -68,7 +68,7 @@ class network():
 
     def train(self, it, data, step):
         try:
-            for _ in range (0, it):
+            for _ in range(it):
                 n = randrange(len(data))
                 self.input_layer = data[n][0]
                 self.correct_output = data[n][1]

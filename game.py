@@ -44,22 +44,7 @@ def game(network, save_data, vs_ai, ai_starts):
         game_grid = [0]*9
         new_game_button.grid_remove()
         if ai_starts:
-            input = game_grid
-            input = list(map(replace2, input))
-            input = list(map(int, input))
-            network.input_layer = input
-            network.compute_network()
-            l = sorted(range(len(network.output_layer)), key=lambda k: network.output_layer[k])
-            l.reverse()
-            l = [x+1 for x in l]
-            for i in range(len(l)):
-                if game_grid[l[i]-1] == 0:
-                    squares[l[i]-1].grid_remove()
-                    labels[turn].grid(row=sq_coord[str(l[i])][0], column=sq_coord[str(l[i])][1])
-                    game_grid[l[i]-1] = (turn%2)+1
-                    turn = turn + 1
-                    break
-            check_win()
+            ai_moves(network)
 
     def win(player):
         if player == "X":
