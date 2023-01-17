@@ -1,5 +1,5 @@
 # Tris_AI
-Tic-Tac-Toe implementation based on artificial intelligence, consisting of a neural network that can be trained using data collected while playing.Execute main.py to use it.
+Tic-Tac-Toe implementation based on artificial intelligence, consisting of a neural network that can be trained using data collected while playing. Run main.py to use it.
 
 network.py contains the network class, with the backpropagation and train methods. Between the input and output layers, the network has two middle layers, the size of which can be specified in main.py together with other parameters.
 
