@@ -5,3 +5,8 @@ def sigmoid(x):
 
 def d_sigmoid(x):
     return sigmoid(x)*(1 - sigmoid(x))
+
+def replace2(x):
+    if x == 2:
+        return -1
+    return x

@@ -12,19 +12,19 @@ class network():
         self.layer1 = [0 in range(sizes[1])]
         self.output_layer = [0 in range(9)]
 
-        self.correct_output = [0 for i in range (9)]
+        self.correct_output = [0 for _ in range (9)]
 
-        self.undistorted_layer0 = [0 for i in range (sizes[0])]
-        self.undistorted_layer1 = [0 for i in range (sizes[1])]
-        self.undistorted_ouput_layer = [0 for i in range (9)]
+        self.undistorted_layer0 = [0 for _ in range (sizes[0])]
+        self.undistorted_layer1 = [0 for _ in range (sizes[1])]
+        self.undistorted_ouput_layer = [0 for _ in range (9)]
 
-        self.weights_i_to_0 = [[0.5 for i in range (sizes[0])] for j in range (9)]
-        self.weights_0_to_1 = [[0.5 for i in range (sizes[1])] for j in range (sizes[0])]
-        self.weights_1_to_o = [[0.5 for i in range (9)] for j in range (sizes[1])]
+        self.weights_i_to_0 = [[0.5 for _ in range (sizes[0])] for j in range (9)]
+        self.weights_0_to_1 = [[0.5 for _ in range (sizes[1])] for j in range (sizes[0])]
+        self.weights_1_to_o = [[0.5 for _ in range (9)] for j in range (sizes[1])]
 
-        self.bias_layer0 = [0 for i in range (sizes[0])]
-        self.bias_layer1 = [0 for i in range (sizes[1])]
-        self.bias_output_layer = [0 for i in range (9)]
+        self.bias_layer0 = [0 for _ in range (sizes[0])]
+        self.bias_layer1 = [0 for _ in range (sizes[1])]
+        self.bias_output_layer = [0 for _ in range (9)]
     
     def compute_network(self):
         self.undistorted_layer0 = np.dot(self.input_layer, self.weights_i_to_0) + self.bias_layer0
@@ -47,9 +47,9 @@ class network():
         self.bias_layer1 = self.bias_layer1 - step*dc_bias1
         self.bias_output_layer = self.bias_output_layer - step*dc_bias_output
             
-        dc_weights_i_to_0 = [0 for i in range (9)]
-        dc_weights_0_to_1 = [0 for i in range (self.sizes[0])]
-        dc_weights_1_to_o = [0 for i in range (self.sizes[1])]
+        dc_weights_i_to_0 = [0 for _ in range (9)]
+        dc_weights_0_to_1 = [0 for _ in range (self.sizes[0])]
+        dc_weights_1_to_o = [0 for _ in range (self.sizes[1])]
             
         for i in range (9):
             dc_weights_i_to_0[i] = self.input_layer[i]*d_0

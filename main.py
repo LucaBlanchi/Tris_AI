@@ -4,7 +4,9 @@ import game
 from tkinter import *
 from tkinter import ttk
 from ttkbootstrap import Style
+from utilities import replace2
 
+# Network parameters
 it = 10000
 step = 0.15
 sizes = [4,4]
@@ -14,11 +16,6 @@ class window(Tk):
 		super().__init__()
 		Style(theme="vapor")
 		self.style = ttk.Style(self)
-
-def replace2(x):
-    if x == 2:
-        return -1
-    return x
 
 def load_data():
         global data
@@ -46,7 +43,7 @@ def clear_data():
         open(path, 'w').close()
         load_data()
 
-def move():
+def check_move():
         try:
                 input = [*str(move_entry.get())]
                 input = list(map(replace2, input))
@@ -67,7 +64,7 @@ load_data()
 main_window = window()
 
 main_window.title("Tris AI")
-main_window.geometry("450x200")
+main_window.geometry("500x200")
 
 train_button = Button(main_window, text = "Train", command = lambda: network.train(it, data, step))
 load_data_button = Button(main_window, text = "Load Data", command = load_data)
@@ -79,17 +76,17 @@ ai_starts = IntVar()
 ai_starts_checkbutton = Checkbutton(main_window, text = "AI starts", variable=ai_starts, onvalue=True, offvalue=False)
 save_data = IntVar()
 save_data_checkbutton = Checkbutton(main_window, text = "Save Data", variable = save_data, onvalue = True, offvalue = False)
-move_button = Button(main_window, text = "Check Move", command = move)
-move_entry = Entry(main_window)
+move_button = Button(main_window, text = "Check Move", command = check_move)
+move_entry = Entry(main_window, width=15)
 
-train_button.grid(row=0, column=0)
-load_data_button.grid(row=0, column=1)
-clear_data_button.grid(row=0, column=2)
-game_button.grid(row=1, column=0)
+train_button.grid(row=0, column=0, ipadx=23, ipady=8)
+load_data_button.grid(row=0, column=1, ipadx=18, ipady=8)
+clear_data_button.grid(row=0, column=2, ipadx=18, ipady=8)
+game_button.grid(row=1, column=0, ipadx=25, ipady=8)
 save_data_checkbutton.grid(row=1, column=3)
 ai_starts_checkbutton.grid(row=1, column=2)
 vs_ai_checkbutton.grid(row=1, column=1)
-move_button.grid(row=2, column=0)
+move_button.grid(row=2, column=0, ipadx=2, ipady=8)
 move_entry.grid(row=2, column=1)
 
 main_window.mainloop()
